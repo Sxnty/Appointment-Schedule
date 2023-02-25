@@ -7,7 +7,9 @@ import "../styles/home.css";
 
 function Home() {
   const { logOut, userLoged } = useContext(AuthContext);
-  console.log(userLoged);
+  const handleLogOut = async () => {
+    await logOut();
+  };
   return (
     <Sidebar/>
   );

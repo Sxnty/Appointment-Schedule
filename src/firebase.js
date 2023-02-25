@@ -2,12 +2,12 @@ import { initializeApp } from "firebase/app";
 import {getAuth} from 'firebase/auth'
 
 const firebaseConfig = {
-  apiKey: "AIzaSyB5CF1SgvVtkmJk5JKx-nAWy__2gu_C8Ik",
-  authDomain: "appointment-schedule-37363.firebaseapp.com",
-  projectId: "appointment-schedule-37363",
-  storageBucket: "appointment-schedule-37363.appspot.com",
-  messagingSenderId: "968381490054",
-  appId: "1:968381490054:web:5fcd98496b25beea27c207",
+  apiKey: import.meta.env.VITE_APP_APIKEY,
+  authDomain: import.meta.env.VITE_AUTH_DOMAIN,
+  projectId: import.meta.env.VITE_PROJECT_ID,
+  storageBucket: import.meta.env.VITE_STORAGE_BUCKET,
+  messagingSenderId: import.meta.env.VITE_MESSAGE_SENDER_ID,
+  appId: import.meta.env.VITE_APP_ID,
 };
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);

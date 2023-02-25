@@ -1,18 +1,9 @@
-import React from "react";
-import { useContext } from "react";
-import { AuthContext } from "../context/AuthContext";
-import Sidebar from "./Sidebar";
-import "../styles/home.css";
-
+import React from 'react'
 
 function Home() {
-  const { logOut, userLoged } = useContext(AuthContext);
-  const handleLogOut = async () => {
-    await logOut();
-  };
   return (
-    <Sidebar/>
-  );
+    <div>Home</div>
+  )
 }
 
-export default Home;
+export default Home

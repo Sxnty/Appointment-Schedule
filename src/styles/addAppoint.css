@@ -1,0 +1,81 @@
+.add__appoint {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+.add__appoint form {
+    padding: 5rem;
+    border: 1px solid white;
+    border-radius: .5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: .5rem;
+    width: 60%;
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.452);
+}
+.appoint__info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: .5rem;
+    padding: 2rem;
+    width: 100%;
+}
+/* .appoint__info label {
+    color: rgb(255, 255, 255);
+} */
+.add__appoint .form__group {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    
+
+}
+.add__appoint .form__group input {
+    padding: .5rem;
+    width: 80%;
+    background-color: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.527);
+    border-radius: .25rem;
+    outline: none;
+}
+.add__appoint .form__group label {
+    margin-right: 10px;
+    font-weight: bolder;
+}
+.appoint__button {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+}
+.appoint__button button {
+    width: 80%;
+    padding: .5rem 1rem;
+    border: none;
+    background-color: #ffffff6b;
+    border-radius: .25rem;
+    transition: background 150ms;
+}
+.appoint__button button:hover {
+    background-color: #ffffff33;
+    cursor:pointer;
+}
+.textarea {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.textarea textarea{
+    resize: none;
+    height: 5rem !important; 
+    width: 80% !important;
+    background-color: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.527);
+    border-radius: .25rem;
+}

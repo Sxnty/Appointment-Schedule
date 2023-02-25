@@ -1,12 +1,38 @@
-import React, { createContext } from "react";
-import {GoogleAuthProvider, signInWithPopup} from 'firebase/auth'
+import React, { createContext, useEffect, useState } from "react";
+import {
+  GoogleAuthProvider,
+  signInWithPopup,
+  onAuthStateChanged,
+  signOut
+} from "firebase/auth";
 import { auth } from "../firebase";
 
 export const AuthContext = createContext();
 const loginWithGoogle = async () => {
-const googleProvider = new GoogleAuthProvider()
-await signInWithPopup(auth, googleProvider)
+  const googleProvider = new GoogleAuthProvider();
+  await signInWithPopup(auth, googleProvider);
+};
+const logOut = async () => {
+    await signOut(auth)
 }
+
 export const AuthProvider = ({ children }) => {
-  return <AuthContext.Provider value={{loginWithGoogle}}>{children}</AuthContext.Provider>;
+  const [userLoged, setUserLoged] = useState(null);
+  const [userLoading, setUserLoading] = useState(true);
+    
+  useEffect(() => {
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        setUserLoged(user);
+      } else {
+        setUserLoged(null);
+      }
+      setUserLoading(false)
+    });
+  }, []);
+  return (
+    <AuthContext.Provider value={{ loginWithGoogle, userLoged, userLoading, logOut }}>
+      {children}
+    </AuthContext.Provider>
+  );
 };

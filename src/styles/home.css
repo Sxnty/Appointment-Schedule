@@ -1,0 +1,37 @@
+.sidebar {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 180px;
+    height: 100vh;
+    padding: 2rem;
+    background-color: #ffffff2d;
+    align-items: center;
+}
+.sidebar__icons {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    font-size: 1rem;
+    white-space: nowrap;
+}
+.sidebar__icons span {
+    display: flex;
+    align-items: center;
+}
+.sidebar__icons span svg {
+    margin: 0 5px;
+}
+.sidebar button {
+    width: fit-content;
+    padding: .5rem 1.5rem;
+    border: none;
+    border-radius: .25rem;
+    background-color: #ffffff6b;
+    display: flex;
+    place-items: center;
+    white-space: nowrap;
+}
+.sidebar button svg {
+    margin: 0 5px;
+}

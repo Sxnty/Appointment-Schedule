@@ -6,9 +6,7 @@ import { CiLogout } from "react-icons/ci";
 import "../styles/home.css";
 
 function Home() {
-  console.log("asd");
   const { logOut, userLoged } = useContext(AuthContext);
-  console.log(userLoged);
   const handleLogOut = async () => {
     await logOut();
   };

@@ -12,6 +12,14 @@
 /* .sidebar:hover {
 
 } */
+.sidebar__profile {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    gap: .5rem;
+}
 .sidebar__icons {
     display: flex;
     flex-direction: column;

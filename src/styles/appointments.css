@@ -30,27 +30,9 @@
     width: 25%;
     border-radius: .25rem;
 }
-.appoint__container table {
-  border-collapse: collapse;
-  font-size: 1rem;
+.appointments__list{
   width: 100%;
-}
-.appoint__container th {
-  border: 2px solid #ddd;
-  padding: 1rem;
-  background-color: white;
-  font-weight: bold;
-}
-
-.appoint__container td {
-  border: 2px solid #ddd;
-  padding: 0.5rem;
-  text-align: left;
-  background-color: white;
-}
-.appoint__date, .appoint__buttons {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 1rem;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
 }

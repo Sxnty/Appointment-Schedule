@@ -1,0 +1,43 @@
+.appointment__card {
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  padding: 1rem;
+  border-radius: 0.25rem;
+  gap: 0.5rem;
+}
+.card__footer {
+  display: flex;
+  justify-content: end;
+  padding: .5rem 0;
+}
+.card__name {
+  display: flex;
+  align-items: center;
+}
+.card__name svg, .card__info>div svg {
+  font-size: 1.2rem;
+  margin-right: 10px;
+  fill: #000000b6;
+}
+.card__name h2 {
+  font-size: 1.2rem;
+  color: #1b1b1b;
+}
+
+.card__info>div{
+display: flex;
+}
+
+.card__name,
+.card__info > div {
+  border-bottom: 1px solid #ddd;
+  padding: 0.5rem 0 1rem 0;
+}
+.card__date {
+    flex-direction: column;
+    gap: .5rem;
+}
+.card__date >div{
+    display: flex;
+}

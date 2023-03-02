@@ -58,7 +58,7 @@ function AddAppoint() {
               <label>Fecha</label>
               <input
                 name="date"
-                type="date"
+                type="datetime-local"
                 value={newAppoint.date}
                 onChange={handleOnChange}
               />

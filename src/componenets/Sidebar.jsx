@@ -3,7 +3,7 @@ import { RiFolderAddLine, RiEyeLine, RiSettings3Line } from "react-icons/ri";
 import { CiLogout } from "react-icons/ci";
 import { useContext, useState } from "react";
 import { AuthContext } from "../context/AuthContext";
-import { useNavigate, Navigate, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import "../styles/sidebar.css";
 function Sidebar() {
   const [showSidebar, setShowSidebar] = useState(true);

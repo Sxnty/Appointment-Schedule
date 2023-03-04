@@ -1,53 +1,27 @@
-import React from "react";
+import React, {useContext} from "react";
 import "../styles/appointments.css";
-import { RiDeleteBin6Line, RiEdit2Line } from "react-icons/ri";
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import Appointment from "./Appointment";
 import moment from "moment";
+import {AppointmentsContext} from '../context/AppointmentsContext'
+
 
 function Appointments() {
-  const data = [
-    {
-      name: "jose",
-      date: "03-04-2023",
-      notes: "test",
-    },
-    {
-      name: "alejandro",
-      date: "2021-12-20 20:30hs",
-      notes: "test",
-    },
-    {
-      name: "andres",
-      date: "2022-12-22 20:30hs",
-      notes: "test",
-    },
-    {
-      name: "fernando",
-      date: "1999-12-22 20:30hs",
-      notes: "test",
-    },
-    {
-      name: "Fernando",
-      date: "1999-12-22 20:30hs",
-      notes: "test",
-    },
-  ];
+
+  const data = [];
 
   const [dataFilter, setDataFilter] = useState([]);
   const [fullData, setFullData] = useState([]);
 
-  useEffect(() => {
-    setFullData(data);
-    setDataFilter(data);
+  const {appointments} = useContext(AppointmentsContext);
+  
+
+  useEffect( () => {
+    setDataFilter(appointments);
+    setFullData(appointments);
   }, []);
 
-  let actualDay = moment().format("YYYY-MM-DD");
-
-  function compararFechas(a, b) {
-    return b.fecha - a.fecha;
-  }
 
   const dataNameFiltered = (e) => {
     let dataFiltrada = fullData.filter((data) =>
@@ -58,7 +32,6 @@ function Appointments() {
 
   const dataDateFiltered = (e) => {
     let formDate = "";
-    console.log(e);
     if (typeof e == "object") {
       formDate = e.target.value;
     } else {
@@ -93,15 +66,16 @@ function Appointments() {
           </Link>
         </div>
         <div className="appointments__list">
-          {dataFilter.map((e) => {
+
+          {dataFilter && dataFilter.length ? dataFilter.map((e) => {
             return (
               <Appointment
                 appointment={e}
-                key={e.name}
+                key={e.id}
                 handleDelete={handleDelete}
               />
             );
-          })}
+          }) : <p className="not_cites"> No se han encontrado Citas, <Link to={'/add-appoint'}> Crear una</Link> </p>}
         </div>
       </main>
     </>

@@ -42,3 +42,16 @@
   grid-template-columns: repeat(4, 1fr);
   gap: 1rem;
 }
+
+.not_cites {
+  grid-column: span 4;
+  text-align: center;
+  background-color: rgb(191, 118, 118);
+  color: white;
+  padding: 20px;
+}
+
+.not_cites a {
+  color: white;
+  font-weight: bold;
+}

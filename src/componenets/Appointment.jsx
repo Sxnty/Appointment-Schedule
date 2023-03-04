@@ -10,7 +10,7 @@ import "../styles/appointmentCard.css";
 import moment from "moment";
 
 function Appointment({ appointment, handleDelete }) {
-  let newDate = appointment.date.split(" ");
+  
   let className =
     moment(appointment.date).format("YYYY-MM-DD") ==
     moment().format("YYYY-MM-DD")
@@ -27,16 +27,16 @@ function Appointment({ appointment, handleDelete }) {
         <div className="card__date">
           <div className="date__day">
             <RiCalendar2Line />
-            <p>{newDate[0]}</p>
+            <p>{appointment.date}</p>
           </div>
           <div className="card__hour">
             <RiTimeLine />
-            <p>{newDate[1]}</p>
+            <p>{appointment.hour}</p>
           </div>
         </div>
         <div>
           <RiMessage2Line />
-          <p>{appointment.notes}</p>
+          <p>{appointment.description}</p>
         </div>
       </div>
       <div className={className}>

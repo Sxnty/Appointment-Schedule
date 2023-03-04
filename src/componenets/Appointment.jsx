@@ -7,9 +7,16 @@ import {
   RiTimeLine,
 } from "react-icons/ri";
 import "../styles/appointmentCard.css";
+import moment from "moment";
 
-function Appointment({ appointment }) {
+function Appointment({ appointment, handleDelete }) {
   let newDate = appointment.date.split(" ");
+  let className =
+    moment(appointment.date).format("YYYY-MM-DD") ==
+    moment().format("YYYY-MM-DD")
+      ? "card__footer"
+      : "card__footer fix-right";
+
   return (
     <div className="appointment__card">
       <div className="card__name">
@@ -32,8 +39,16 @@ function Appointment({ appointment }) {
           <p>{appointment.notes}</p>
         </div>
       </div>
-      <div className="card__footer">
-        <RiDeleteBin7Line />
+      <div className={className}>
+        {moment(appointment.date).format("YYYY-MM-DD") ==
+        moment().format("YYYY-MM-DD") ? (
+          <p>Hoy</p>
+        ) : null}
+        <RiDeleteBin7Line
+          onClick={() => {
+            handleDelete(appointment.name);
+          }}
+        />
       </div>
     </div>
   );

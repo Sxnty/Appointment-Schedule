@@ -24,10 +24,16 @@
     color: white;
     background-color: #c0bebe;
 }
-.appoint__top input {
+.top__filters {
+  width: 100%;
+  display: flex;
+  gap: 1rem;
+}
+.appoint__top .top__filters input {
     padding: .5rem;
     border: none;
     width: 25%;
+
     border-radius: .25rem;
 }
 .appointments__list{

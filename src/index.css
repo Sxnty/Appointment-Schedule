@@ -12,5 +12,7 @@
 #root {
     height: 100vh;
     background: linear-gradient(to top, #c4a4ff, #e4d7fc) no-repeat center;
+}
+.main {
     display: flex;
 }

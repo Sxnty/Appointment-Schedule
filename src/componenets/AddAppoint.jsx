@@ -2,6 +2,7 @@ import React from "react";
 import "../styles/addAppoint.css";
 import { useState, useEffect } from "react";
 import toast, { Toaster } from 'react-hot-toast';
+import moment from "moment";
 
 function AddAppoint() {
   const [newAppoint, setNewAppoint] = useState({
@@ -20,9 +21,13 @@ function AddAppoint() {
 
     Object.values(newAppoint).map(function (value) {
       if (value == null || !value) {
-        setEmptyValues(true);
+        return setEmptyValues(true);
       }
     });
+
+    let date = moment(newAppoint.date).format('DD-MM-YYYY')
+    let hour = moment(newAppoint.date).format('HH:mm')
+    console.log(date, hour)
 
     console.log(newAppoint);
   };

@@ -5,6 +5,8 @@ import { useState, useEffect } from "react";
 import Appointment from "./Appointment";
 import moment from "moment";
 import {AppointmentsContext} from '../context/AppointmentsContext'
+import { deleteAppointment } from "../firestore_api";
+import toast, {Toaster} from 'react-hot-toast'
 
 
 function Appointments() {
@@ -14,7 +16,7 @@ function Appointments() {
   const [dataFilter, setDataFilter] = useState([]);
   const [fullData, setFullData] = useState([]);
 
-  const {appointments} = useContext(AppointmentsContext);
+  const {appointments,setAppointments} = useContext(AppointmentsContext);
   
 
   useEffect( () => {
@@ -44,10 +46,22 @@ function Appointments() {
     setDataFilter(dataFiltrada);
   };
 
-  const handleDelete = (e) => {
-    let newData = data.filter((appointment) => appointment.name != e);
-    setFullData(newData);
-    setDataFilter(newData);
+  const handleDelete = async (id) => {
+    let result = await deleteAppointment(id);
+    if(result.code == 200) {
+      toast.success(result.msg, {
+        position: "top-right"
+      });
+      let appointmentsFiltered = appointments.filter(appointment => {
+        return appointment.id != id
+      });
+      setAppointments(appointmentsFiltered);
+      setFullData(appointmentsFiltered);
+      setDataFilter(appointmentsFiltered);
+      // eliminar desde el localstorage
+      localStorage.setItem('appointments',JSON.stringify(appointmentsFiltered));
+    }
+    
   };
   return (
     <>
@@ -78,6 +92,7 @@ function Appointments() {
           }) : <p className="not_cites"> No se han encontrado Citas, <Link to={'/add-appoint'}> Crear una</Link> </p>}
         </div>
       </main>
+      <Toaster/>
     </>
   );
 }

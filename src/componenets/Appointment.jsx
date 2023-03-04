@@ -8,11 +8,14 @@ import {
 } from "react-icons/ri";
 import "../styles/appointmentCard.css";
 import moment from "moment";
+import {Timestamp} from 'firebase/firestore'
 
 function Appointment({ appointment, handleDelete }) {
   
+  let timeStamp = new Timestamp(appointment.date.seconds, appointment.date.nanoseconds);
+  timeStamp = moment(timeStamp.toDate()).format('DD-MM-YYYY');
   let className =
-    moment(appointment.date).format("YYYY-MM-DD") ==
+  timeStamp ==
     moment().format("YYYY-MM-DD")
       ? "card__footer"
       : "card__footer fix-right";
@@ -27,7 +30,7 @@ function Appointment({ appointment, handleDelete }) {
         <div className="card__date">
           <div className="date__day">
             <RiCalendar2Line />
-            <p>{appointment.date}</p>
+            <p>{timeStamp}</p>
           </div>
           <div className="card__hour">
             <RiTimeLine />
@@ -46,7 +49,7 @@ function Appointment({ appointment, handleDelete }) {
         ) : null}
         <RiDeleteBin7Line
           onClick={() => {
-            handleDelete(appointment.name);
+            handleDelete(appointment.id);
           }}
         />
       </div>

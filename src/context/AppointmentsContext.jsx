@@ -7,8 +7,10 @@ export const AppointmentsProvider = ({ children }) => {
     const [appointments,setAppointments] = useState([]);
 
     useEffect(() => {
-     if(localStorage.getItem("appointments")) {
+     if(!appointments.length && localStorage.getItem("appointments")) {
       setAppointments(JSON.parse(localStorage.getItem("appointments")));
+     } else if(appointments.length) {
+      localStorage.setItem("appointments", JSON.stringify(appointments));
      }
     }, []);
 

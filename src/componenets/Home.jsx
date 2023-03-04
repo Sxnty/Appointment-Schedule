@@ -3,18 +3,22 @@ import { AppointmentsContext } from '../context/AppointmentsContext';
 import { AuthContext } from '../context/AuthContext';
 import { getAppointments } from '../firestore_api';
 function Home() {
-  const {setAppointments} = useContext(AppointmentsContext);
+  const {appointments,setAppointments} = useContext(AppointmentsContext);
   const {userLoged} = useContext(AuthContext);
 
 
   useEffect(() => {
-    fetchData();
+    if(!appointments.length) {
+      fetchData();
+    }
     async function fetchData() {
       let result = await getAppointments(userLoged.uid);
       if(result && result.code == 200) {
-        console.log(result.msg);
-        setAppointments(result.msg);
-        localStorage.setItem("appointments",JSON.stringify(result.msg));
+        if(result.msg.length) {
+          setAppointments(result.msg);
+          localStorage.setItem("appointments",JSON.stringify(result.msg));
+        }
+        
       }
     }
   }, []);

@@ -4,8 +4,10 @@ import { useState } from "react";
 import toast, { Toaster } from 'react-hot-toast';
 import moment from "moment";
 import { createAppointment } from "../firestore_api";
-import {AuthContext} from '../context/AuthContext'; 
+import {AuthContext} from '../context/AuthContext';
+import { AppointmentsContext } from "../context/AppointmentsContext"; 
 import { useNavigate } from "react-router-dom";
+import { Timestamp } from "firebase/firestore";
 
 function AddAppoint() {
   const [newAppoint, setNewAppoint] = useState({
@@ -15,6 +17,8 @@ function AddAppoint() {
   });
 
   const {userLoged} = useContext(AuthContext);
+  const {appointments,setAppointments} = useContext(AppointmentsContext);
+
   const navigate = useNavigate();
   const handleOnChange = (e) => {
     setNewAppoint({ ...newAppoint, [e.target.name]: e.target.value });
@@ -32,23 +36,26 @@ function AddAppoint() {
       return;
     }
 
-    let date = moment(newAppoint.date).format('DD-MM-YYYY')
+    // para guardar coom tipo timestamp que te lo pide firebase
+    let date =  new Date(newAppoint.date);
+    let timestamp = Timestamp.fromDate(date);
+    
     let hour = moment(newAppoint.date).format('HH:mm')
 
-    newAppoint.date = date;
+    newAppoint.date = timestamp;
     newAppoint.hour = hour;
     newAppoint.userId = userLoged.uid; //el usuario logueado.
 
     let result = await createAppointment(newAppoint);
 
     if(result && result.code == 200) {
+      newAppoint.id = result.id;
+      setAppointments([...appointments,newAppoint]);
       setNewAppoint({ ...newAppoint, name: '' });
       setNewAppoint({ ...newAppoint, date: '' });
       setNewAppoint({ ...newAppoint, description: '' });
-      toast.success(result.msg, {
-        position:'top-right'
-      });
       navigate('/appointments');
+
     } else {
       toast.error(result.msg, {
         position:'top-right'

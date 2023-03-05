@@ -1,0 +1,62 @@
+.edit__main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+.edit__container {
+  display: grid;
+  align-items: center;
+  justify-content: center;
+  width: 60%;
+  grid-template-columns: 1fr 1fr;
+  background-color: white;
+  padding: 2rem;
+  border-radius: 0.5rem;
+}
+.edit__time {
+  display: flex;
+  justify-content: center;
+  align-items: left;
+  flex-direction: column;
+  gap: 2rem;
+}
+.edit__header {
+  border-bottom: 1px solid #ddd;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.edit__header span {
+  color: rgb(121, 121, 121);
+  font-weight: bolder;
+}
+.edit__time > div {
+  padding: 1rem 0;
+  width: 90%;
+}
+.edit__time > div > p {
+  padding-bottom: 1rem;
+}
+.edit__time input {
+  width: 50%;
+  padding: 0.5rem 1rem;
+}
+.edit__info {
+  display: flex;
+  justify-content: center;
+  align-items: left;
+  flex-direction: column;
+  gap: 2rem;
+}
+.info__name > div {
+  padding: 1rem 0;
+  width: 90%;
+}
+.info__name > div > p {
+  padding-bottom: 1rem;
+}
+.info__name input {
+  width: 50%;
+  padding: 0.5rem 1rem;
+}

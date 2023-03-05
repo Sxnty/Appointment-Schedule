@@ -5,21 +5,28 @@ import {
   RiCalendar2Line,
   RiMessage2Line,
   RiTimeLine,
+  RiEdit2Line,
 } from "react-icons/ri";
 import "../styles/appointmentCard.css";
 import moment from "moment";
-import {Timestamp} from 'firebase/firestore'
+import { Link } from "react-router-dom";
+import { Timestamp } from "firebase/firestore";
 
 function Appointment({ appointment, handleDelete }) {
-  
-  let timeStamp = new Timestamp(appointment.date.seconds, appointment.date.nanoseconds);
-  timeStamp = moment(timeStamp.toDate()).format('DD-MM-YYYY');
+  let timeStamp = new Timestamp(
+    appointment.date.seconds,
+    appointment.date.nanoseconds
+  );
+  timeStamp = moment(timeStamp.toDate()).format("DD-MM-YYYY");
   let className =
-  timeStamp ==
-    moment().format("YYYY-MM-DD")
+    timeStamp == moment().format("YYYY-MM-DD")
       ? "card__footer"
       : "card__footer fix-right";
-
+  const handleModify = (e) => {
+    e.preventDefault()
+     console.log('tets')
+     history.push()
+  }
   return (
     <div className="appointment__card">
       <div className="card__name">
@@ -47,6 +54,9 @@ function Appointment({ appointment, handleDelete }) {
         moment().format("YYYY-MM-DD") ? (
           <p>Hoy</p>
         ) : null}
+        <Link to={'/edit/'+appointment.id} >
+          <RiEdit2Line />
+        </Link>
         <RiDeleteBin7Line
           onClick={() => {
             handleDelete(appointment.id);

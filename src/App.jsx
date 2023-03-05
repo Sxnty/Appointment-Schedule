@@ -8,6 +8,7 @@ import Home from "./componenets/Home";
 import Login from "./componenets/Login";
 import Sidebar from "./componenets/Sidebar";
 import AddAppoint from "./componenets/AddAppoint";
+import EditAppointment from "./componenets/EditAppointment";
 function App() {
   return (
     <AuthProvider>
@@ -39,6 +40,14 @@ function App() {
               element={
                 <Auth>
                   <AddAppoint />
+                </Auth>
+              }
+            />
+                        <Route
+              path="/edit/:id"
+              element={
+                <Auth>
+                  <EditAppointment />
                 </Auth>
               }
             />

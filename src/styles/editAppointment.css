@@ -5,11 +5,11 @@
   width: 100%;
 }
 .edit__container {
-  display: grid;
-  align-items: center;
+  display: flex;
+  align-items: left;
   justify-content: center;
+  flex-direction: column;
   width: 60%;
-  grid-template-columns: 1fr 1fr;
   background-color: white;
   padding: 2rem;
   border-radius: 0.5rem;
@@ -30,6 +30,7 @@
 .edit__header span {
   color: rgb(121, 121, 121);
   font-weight: bolder;
+  padding-bottom: 0.5rem;
 }
 .edit__time > div {
   padding: 1rem 0;
@@ -49,14 +50,36 @@
   flex-direction: column;
   gap: 2rem;
 }
-.info__name > div {
+.edit__info > div {
   padding: 1rem 0;
   width: 90%;
 }
-.info__name > div > p {
+.edit__info > div > p {
   padding-bottom: 1rem;
 }
 .info__name input {
   width: 50%;
   padding: 0.5rem 1rem;
+}
+.info__description textarea {
+  width: 80%;
+}
+
+.fieldset__container {
+  display: grid;
+  align-items: center;
+  justify-content: center;
+  grid-template-columns: 1fr 1fr;
+  background-color: white;
+}
+.edit__container button {
+  width: fit-content;
+  padding: 0.5rem 1.5rem;
+  border-radius: 0.25rem;
+  border: 1px solid #6d6d6d;
+  cursor: pointer;
+  transition: background 150ms;
+}
+.edit__container button:hover {
+  background-color: #ddd;
 }

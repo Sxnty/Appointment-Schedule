@@ -24,7 +24,6 @@ function Appointment({ appointment, handleDelete }) {
       : "card__footer fix-right";
   const handleModify = (e) => {
     e.preventDefault()
-     console.log('tets')
      history.push()
   }
   return (

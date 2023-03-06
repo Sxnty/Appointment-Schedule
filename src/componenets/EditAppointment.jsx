@@ -5,10 +5,8 @@ import { AppointmentsContext } from "../context/AppointmentsContext";
 import "../styles/editAppointment.css";
 function EditAppointment() {
   const { appointments } = useContext(AppointmentsContext);
-  console.log(appointments);
   const { id } = useParams();
   let thisAppoint = appointments.filter((e) => e.id === id);
-  console.log(thisAppoint);
 
   return (
     <>

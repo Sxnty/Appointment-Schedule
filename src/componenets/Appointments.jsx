@@ -7,6 +7,7 @@ import moment from "moment";
 import {AppointmentsContext} from '../context/AppointmentsContext'
 import { deleteAppointment } from "../firestore_api";
 import toast, {Toaster} from 'react-hot-toast'
+import { Timestamp } from "firebase/firestore";
 
 
 function Appointments() {
@@ -41,7 +42,12 @@ function Appointments() {
     }
     let dataFiltrada = fullData.filter((data) => {
       let date = moment(formDate).format("DD-MM-YYYY");
-      return data.date.includes(date);
+      let timeStamp = new Timestamp(
+        data.date.seconds,
+        data.date.nanoseconds
+      );
+      timeStamp = moment(timeStamp.toDate()).format("DD-MM-YYYY");
+      return timeStamp.includes(date);
     });
     setDataFilter(dataFiltrada);
   };

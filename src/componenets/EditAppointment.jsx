@@ -9,12 +9,15 @@ function EditAppointment() {
   const { appointments } = useContext(AppointmentsContext);
   const { id } = useParams();
   let thisAppoint = appointments.filter((e) => e.id === id);
+<<<<<<< HEAD
   console.log(thisAppoint);
   const { userLoged } = useContext(AuthContext);
 
   //check if the id is from the user loged
   let permission = false;
   if (userLoged.uid === thisAppoint[0].userId) permission = true;
+=======
+>>>>>>> eff2f81648c783c3febe7ab6087632c001641ff2
 
   return (
     <>

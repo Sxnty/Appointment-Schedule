@@ -9,19 +9,11 @@ function EditAppointment() {
   const { appointments } = useContext(AppointmentsContext);
   const { id } = useParams();
   let thisAppoint = appointments.filter((e) => e.id === id);
-<<<<<<< HEAD
-  console.log(thisAppoint);
   const { userLoged } = useContext(AuthContext);
-
-  //check if the id is from the user loged
-  let permission = false;
-  if (userLoged.uid === thisAppoint[0].userId) permission = true;
-=======
->>>>>>> eff2f81648c783c3febe7ab6087632c001641ff2
 
   return (
     <>
-      {!permission ? <h1>No tienes permiso para modificar esta cita.</h1> : (
+      {userLoged.uid != thisAppoint[0].userId ? <h1>No tienes permiso para modificar esta cita.</h1> : (
         <section className="edit__main">
           <div className="edit__container">
             <article className="edit__header">
